@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Варя</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script>
+        function printSmoothly(text, delay = 100) {
+            let index = 0;
+            const output = document.getElementById('output');
+
+            function printNextChar() {
+                if (index < text.length) {
+                    output.textContent += text.charAt(index);
+                    index++;
+                    if (text.charAt(index - 1) === ' ') {
+                        setTimeout(printNextChar, delay);
+                    } else {
+                        printNextChar();
+                    }
+                }
+            }
+
+            printNextChar();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordInput = document.getElementById('password');
+            const text =
+                "Привет, как ты? Вообщем познакомился я с одной девочкой, зовут её Варвара. Странная она девочка, не длинные волосы, не очень высокая, слегка бледная но скромная. Не хватит времени и сил, чтобы описать то насколько ты загадочная. Ты классно злишься, очень смешно себя ведёшь, а ещё у тебя очень приятный и нежный голос. Он побуждает меня к действиям. Ты понимаешь ценности данной жизни и мечтаешь о классных вещах. Иногда ты очень смешная, так как ты такая классная из-за своего характера который, мне давно не давал покоя. Я готов смириться со всеми твоими недостатками, ведь у тебя их нет. Хотя единственный твой недостаток который отпугивает парней это твоя напористость, она мне говорит лишь о том, что ты делаешь правильный выбор и готова стоять до последнего за своим решением. Я хотел бы показать тебе мир, чтобы ты ездила со мной всегда и везде. Хоть у нас ничего не получилось, но я верю что в этот раз у меня и у тебя что-то получится, ведь нужно мечтать о хорошем. Надеюсь ты готова принять меня. Твоя ревность для меня та ещё загадка, если ты кого-то любишь, то скорее всего это будет один парень на всю жизнь. Твоя борьба мне предаёт уверенности в тебе, ведь как можно ревновать парня и хотеть чтобы он был только твой, при этом изменять ему. Спасибо что присутствуешь в моей жизни, спасибо что наполняешь его радостью. Я бы хотел бы с тобой быть потому что ты наверное самая лучшая в моей жизни, ты меня поймёшь и выслушаешь, а главное что мне с тобой комфортно и интересно, что и придаёт мне больше мотивации быть с тобой. По моим комплексным выселениям я могу утверждать, что мы с тобой поладим и вообще ты самая лучшая, я готов тебе годами об этом говорить тебе и только тебе. С любовью, Дима.";
+
+            document.getElementById('submit').addEventListener('click', function (event) {
+                event.preventDefault();
+                const password = passwordInput.value;
+                if (password === "Го встр") {
+                    printSmoothly(text);
+                } else {
+                    output.textContent = "Пароль неверный";
+                }
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif !important;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="password">Введите пароль:</label>
+        <input type="password" id="password" name="password">
+        <button id="submit" type="submit">Войти</button>
+    </form>
+
+    <div id="output"></div>
+</body>
+
+</html>
